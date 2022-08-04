@@ -1,0 +1,13 @@
+package com.ckm.gulimall.order.service;
+
+import com.ckm.gulimall.order.entity.OmsOrderSetting;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+/**
+* @author ASUS
+* @description 针对表【oms_order_setting(订单配置信息)】的数据库操作Service
+* @createDate 2022-08-04 16:38:21
+*/
+public interface OmsOrderSettingService extends IService<OmsOrderSetting> {
+
+}
