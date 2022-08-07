@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/gulimall_sms?serverTimezone=Asia/Shanghai&useUnicode=true&charaterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+  application:
+    name: gulimall-member
+
+server:
+  port: 10015

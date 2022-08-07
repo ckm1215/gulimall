@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: gulimall-product-routes
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+        - id: renren-fast-routes
+          uri: lb://renren-fast-service
+          predicates:
+             - Path=/api/**
+          filters:
+             - RewritePath=/api/?(?<segment>.*), /renren-fast/$\{segment}
+
+
+
+
+# http://localhost:10000/api/product/category/list/tree
+# http://localhost:8080/renren-fast/product/category/list/tree
+
+#http://localhost:10012/product/category/list/tree
+
+#spring:
+#  gateway:
+#    routes:

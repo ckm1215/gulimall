@@ -3,9 +3,11 @@ package com.ckm.gulimall.member;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @MapperScan(value = "com.ckm.gulimall.member.mapper")
+@EnableDiscoveryClient
 public class GulimallMemberApplication {
 
     public static void main(String[] args) {

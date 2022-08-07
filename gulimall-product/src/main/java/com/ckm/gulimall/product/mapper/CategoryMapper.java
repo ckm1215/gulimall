@@ -2,6 +2,9 @@ package com.ckm.gulimall.product.mapper;
 
 import com.ckm.gulimall.product.entity.Category;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ckm.gulimall.product.vo.CategoryTreeVo;
+
+import java.util.List;
 
 /**
 * @author ASUS
@@ -11,6 +14,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface CategoryMapper extends BaseMapper<Category> {
 
+      List<CategoryTreeVo> listTreeSelect();
 }
 
 

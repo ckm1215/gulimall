@@ -21,4 +21,50 @@
         cat_level,show_status,sort,
         icon,product_unit,product_count
     </sql>
+
+    <select id="listTreeSelect" resultMap="treelistResultMap">
+        SELECT *
+        FROM pms_category
+        WHERE cat_level = 1 AND show_status = 1
+    </select>
+
+    <select id="listTreeSelect1" resultMap="treelistResultMap1">
+        SELECT *
+        FROM pms_category
+        WHERE parent_cid = #{cat_id} AND show_status = 1
+    </select>
+
+    <select id="listTreeSelect2"  resultMap="BaseResultMap">
+        SELECT *
+        FROM pms_category
+        WHERE parent_cid = #{cat_id} AND show_status = 1
+    </select>
+
+
+    <resultMap id="treelistResultMap" type="com.ckm.gulimall.product.vo.CategoryTreeVo">
+        <id property="catId" column="cat_id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="CHAR"/>
+        <result property="parentCid" column="parent_cid" jdbcType="BIGINT"/>
+        <result property="catLevel" column="cat_level" jdbcType="INTEGER"/>
+        <result property="showStatus" column="show_status" jdbcType="TINYINT"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="icon" column="icon" jdbcType="CHAR"/>
+        <result property="productUnit" column="product_unit" jdbcType="CHAR"/>
+        <result property="productCount" column="product_count" jdbcType="INTEGER"/>
+        <collection property="subCategory"  ofType="com.ckm.gulimall.product.vo.CategoryTreeVo" column="{cat_id=cat_id}" select="listTreeSelect1"></collection>
+    </resultMap>
+
+    <resultMap id="treelistResultMap1" type="com.ckm.gulimall.product.vo.CategoryTreeVo">
+        <id property="catId" column="cat_id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="CHAR"/>
+        <result property="parentCid" column="parent_cid" jdbcType="BIGINT"/>
+        <result property="catLevel" column="cat_level" jdbcType="INTEGER"/>
+        <result property="showStatus" column="show_status" jdbcType="TINYINT"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="icon" column="icon" jdbcType="CHAR"/>
+        <result property="productUnit" column="product_unit" jdbcType="CHAR"/>
+        <result property="productCount" column="product_count" jdbcType="INTEGER"/>
+        <collection property="subCategory"  ofType="com.ckm.gulimall.product.vo.CategoryTreeVo" column="{cat_id=cat_id}" select="listTreeSelect2"></collection>
+    </resultMap>
+
 </mapper>
